@@ -1,22 +1,27 @@
 import { useEffect, useMemo, useState } from "react";
 import { festivals } from "./data/festivals.js";
-import { daysUntil, monthKey, monthLabel } from "./lib/deadline.js";
+import { daysUntil, monthKey, monthLabel, isOpen, primaryDeadline } from "./lib/deadline.js";
 import GrainOverlay from "./components/GrainOverlay.jsx";
 import Hero from "./components/Hero.jsx";
 import Toolbar from "./components/Toolbar.jsx";
 import FestivalGroup from "./components/FestivalGroup.jsx";
 import Footer from "./components/Footer.jsx";
 
-function groupByMonth(items) {
+function groupByMonth(items, now) {
   const map = new Map();
   for (const f of items) {
-    const k = monthKey(f.deadlineISO);
+    const iso = primaryDeadline(f, now).dateISO;
+    const k = monthKey(iso);
     if (!map.has(k)) map.set(k, []);
     map.get(k).push(f);
   }
   return [...map.entries()]
     .sort(([a], [b]) => a.localeCompare(b))
-    .map(([key, list]) => ({ key, label: monthLabel(list[0].deadlineISO), items: list }));
+    .map(([key, list]) => ({
+      key,
+      label: monthLabel(primaryDeadline(list[0], now).dateISO),
+      items: list,
+    }));
 }
 
 export default function App() {
@@ -30,35 +35,40 @@ export default function App() {
     return () => clearInterval(id);
   }, []);
 
+  // Festival yang sudah lewat semua tanggalnya (deadline maupun tier terakhir) di-drop, bukan cuma ditandai.
+  const openFestivals = useMemo(() => festivals.filter((f) => isOpen(f, now)), [now]);
+
   const sorted = useMemo(() => {
-    const arr = festivals.filter((f) => filter === "all" || f.cost.type === filter);
+    const arr = openFestivals.filter((f) => filter === "all" || f.cost.type === filter);
     if (sort === "nama") {
       arr.sort((a, b) => a.name.localeCompare(b.name, "id"));
     } else {
-      arr.sort(
-        (a, b) => a.deadlineISO.localeCompare(b.deadlineISO) || a.name.localeCompare(b.name)
-      );
+      arr.sort((a, b) => {
+        const da = primaryDeadline(a, now).dateISO;
+        const db = primaryDeadline(b, now).dateISO;
+        return da.localeCompare(db) || a.name.localeCompare(b.name);
+      });
     }
     return arr;
-  }, [sort, filter]);
+  }, [sort, filter, openFestivals, now]);
 
   const groups =
     sort === "deadline"
-      ? groupByMonth(sorted)
+      ? groupByMonth(sorted, now)
       : sorted.length
         ? [{ key: "az", label: "Terurut A-Z", items: sorted }]
         : [];
 
   const nearestDays = useMemo(() => {
-    const ds = festivals.map((f) => daysUntil(f.deadlineISO, now)).filter((d) => d >= 0);
+    const ds = openFestivals.map((f) => daysUntil(primaryDeadline(f, now).dateISO, now));
     return ds.length ? Math.min(...ds) : 0;
-  }, [now]);
+  }, [openFestivals, now]);
 
   return (
     <>
       <GrainOverlay />
       <div className="relative z-10">
-        <Hero total={festivals.length} nearestDays={nearestDays} />
+        <Hero total={openFestivals.length} nearestDays={nearestDays} />
 
         <Toolbar
           sort={sort}
@@ -66,7 +76,7 @@ export default function App() {
           filter={filter}
           setFilter={setFilter}
           count={sorted.length}
-          total={festivals.length}
+          total={openFestivals.length}
         />
 
         <main id="jadwal" className="mx-auto max-w-[1180px] scroll-mt-20 px-5 pt-12 md:px-8">

@@ -1,5 +1,5 @@
 import { ArrowUpRight, MagnifyingGlass, Warning } from "@phosphor-icons/react";
-import { formatShort, statusOf, googleSearchUrl } from "../lib/deadline.js";
+import { formatShort, statusOf, googleSearchUrl, upcomingCandidates } from "../lib/deadline.js";
 import { COUNTRIES } from "../data/festivals.js";
 import CountdownChip from "./CountdownChip.jsx";
 
@@ -21,11 +21,13 @@ function tierShort(iso) {
 }
 
 export default function FestivalCard({ festival, now }) {
-  const { name, countryCode, deadlineISO, deadlineNote, cost, url, searchHint, verify, tiers } =
-    festival;
-  const status = statusOf(deadlineISO, now);
-  const [day, month, year] = formatShort(deadlineISO).split(" ");
-  const extraTiers = tiers?.slice(1) ?? [];
+  const { name, countryCode, deadlineNote, cost, url, searchHint, verify } = festival;
+  // Tanggal berikutnya yang masih bisa dikejar (tier awal yang lewat otomatis di-skip).
+  const upcoming = upcomingCandidates(festival, now);
+  const primary = upcoming[0];
+  const remainingTiers = upcoming.slice(1);
+  const status = statusOf(primary.dateISO, now);
+  const [day, month, year] = formatShort(primary.dateISO).split(" ");
 
   return (
     <article
@@ -45,20 +47,25 @@ export default function FestivalCard({ festival, now }) {
             {day} {month}
             <span className="ml-1 text-[color:var(--color-faint)]">{year}</span>
           </div>
-          <CountdownChip iso={deadlineISO} now={now} />
+          {primary.label && (
+            <span className="-mt-1 font-mono-num text-[11px] tracking-[0.1em] text-[color:var(--color-signal)]">
+              TIER {primary.label.toUpperCase()}
+            </span>
+          )}
+          <CountdownChip iso={primary.dateISO} now={now} />
           {deadlineNote && (
             <span className="font-mono-num text-[11px] text-[color:var(--color-faint)]">
               {deadlineNote}
             </span>
           )}
-          {extraTiers.length > 0 && (
+          {remainingTiers.length > 0 && (
             <div className="mt-0.5 flex flex-wrap gap-1.5">
-              {extraTiers.map((t) => (
+              {remainingTiers.map((t) => (
                 <span
-                  key={t.label}
+                  key={t.dateISO}
                   className="rounded-full border border-[color:var(--color-line)] px-2 py-0.5 font-mono-num text-[10.5px] text-[color:var(--color-muted)]"
                 >
-                  {t.label} {tierShort(t.dateISO)}
+                  {t.label ? `${t.label} ${tierShort(t.dateISO)}` : tierShort(t.dateISO)}
                 </span>
               ))}
             </div>
