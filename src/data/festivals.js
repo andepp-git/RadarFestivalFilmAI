@@ -1,9 +1,9 @@
-// Radar Festival Film AI — data snapshot (scan Epino Production, 13 Juli 2026).
-// Hanya festival yang MASIH BUKA (deadline setelah 13 Jul 2026).
+// Radar Festival Film AI — data snapshot (scan Epino Production, 20 Juli 2026).
+// Hanya festival yang MASIH BUKA (deadline setelah 20 Jul 2026).
 // Empat kolom yang ditampilkan: Festival, Deadline, Biaya, Link.
 // `deadlineISO` = tanggal terdekat yang masih bisa dikejar. Urgensi dihitung live dari tanggal ini.
 
-export const UPDATED_LABEL = "13 Juli 2026";
+export const UPDATED_LABEL = "20 Juli 2026";
 
 export const COUNTRIES = {
   IND: "India",
@@ -11,26 +11,28 @@ export const COUNTRIES = {
   KAZ: "Kazakhstan",
   JPN: "Jepang",
   IDN: "Indonesia",
+  MYS: "Malaysia",
   GLB: "Global / Online",
 };
 
 // cost.type: 'free' | 'paid' | 'unknown'  (dipakai untuk filter + kuat-lemahnya sinyal)
 export const festivals = [
   {
-    id: "kiaff",
-    name: "KIAFF - Kerala Int'l AI Film Festival",
-    countryCode: "IND",
-    deadlineISO: "2026-07-20",
+    id: "digicon6-id",
+    name: "DigiCon6 ASIA 2026 (Indonesia Circuit)",
+    countryCode: "IDN",
+    deadlineISO: "2026-07-21",
+    deadlineNote: "23:59 WIB",
     cost: { type: "free", label: "Gratis" },
-    url: "https://sostorytelling.com/ai-film-festival/",
+    searchHint: "DigiCon6 Japan Foundation Jakarta submit",
   },
   {
-    id: "indywood",
-    name: "Indywood International AI Cinefest",
-    countryCode: "IND",
+    id: "digicon6-my",
+    name: "DigiCon6 ASIA 2026 (Malaysia Circuit)",
+    countryCode: "MYS",
     deadlineISO: "2026-07-31",
-    cost: { type: "unknown", label: "Cek situs" },
-    searchHint: "Indywood International AI Cinefest submit",
+    cost: { type: "free", label: "Gratis (via MDEC)" },
+    searchHint: "DigiCon6 ASIA Malaysia MDEC Rtist",
   },
   {
     id: "red-rocks",
@@ -77,15 +79,6 @@ export const festivals = [
     deadlineISO: "2026-08-15",
     cost: { type: "free", label: "Gratis" },
     searchHint: "Future Vision XPRIZE film",
-  },
-  {
-    id: "aimf",
-    name: "AI Media Festival 2026 (AIMF)",
-    countryCode: "USA",
-    deadlineISO: "2026-08-15",
-    cost: { type: "unknown", label: "Cek situs" },
-    url: "https://aimediafestival.org",
-    verify: true,
   },
   {
     id: "jiff-2027",
@@ -136,14 +129,6 @@ export const festivals = [
     verify: true,
   },
   {
-    id: "tyrannus",
-    name: "Tyrannus Angel Awards",
-    countryCode: "USA",
-    deadlineISO: "2026-09-20",
-    cost: { type: "unknown", label: "Cek situs" },
-    url: "https://tyrannusfoundation.org",
-  },
-  {
     id: "wearehuman",
     name: "WeAreHuman Foundation Film Festival",
     countryCode: "GLB",
@@ -152,12 +137,25 @@ export const festivals = [
     searchHint: "WeAreHuman Foundation Film Festival",
   },
   {
+    id: "tyrannus",
+    name: "Tyrannus Angel Awards",
+    countryCode: "USA",
+    deadlineISO: "2026-09-20",
+    cost: { type: "unknown", label: "Cek situs" },
+    url: "https://tyrannusfoundation.org",
+  },
+  {
     id: "slamdance-dig",
     name: "Slamdance - kategori DIG",
     countryCode: "USA",
-    deadlineISO: "2026-10-06",
-    cost: { type: "unknown", label: "Cek situs" },
+    deadlineISO: "2026-08-10",
+    cost: { type: "paid", label: "DIG/Shorts: $60-90 (tiered)" },
     url: "https://slamdance.com/festival-submit/",
+    tiers: [
+      { label: "Regular", dateISO: "2026-08-10" },
+      { label: "Late", dateISO: "2026-09-14" },
+      { label: "Extended", dateISO: "2026-10-06" },
+    ],
   },
   {
     id: "ai-film-ads-bali",
