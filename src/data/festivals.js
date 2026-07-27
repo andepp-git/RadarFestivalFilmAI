@@ -1,9 +1,9 @@
-// Radar Festival Film AI — data snapshot (scan Epino Production, 20 Juli 2026).
-// Hanya festival yang MASIH BUKA (deadline setelah 20 Jul 2026).
+// Radar Festival Film AI — data snapshot (scan Epino Production, 27 Juli 2026).
+// Hanya festival yang MASIH BUKA (deadline setelah 27 Jul 2026).
 // Empat kolom yang ditampilkan: Festival, Deadline, Biaya, Link.
 // `deadlineISO` = tanggal terdekat yang masih bisa dikejar. Urgensi dihitung live dari tanggal ini.
 
-export const UPDATED_LABEL = "20 Juli 2026";
+export const UPDATED_LABEL = "27 Juli 2026";
 
 export const COUNTRIES = {
   IND: "India",
@@ -17,15 +17,6 @@ export const COUNTRIES = {
 
 // cost.type: 'free' | 'paid' | 'unknown'  (dipakai untuk filter + kuat-lemahnya sinyal)
 export const festivals = [
-  {
-    id: "digicon6-id",
-    name: "DigiCon6 ASIA 2026 (Indonesia Circuit)",
-    countryCode: "IDN",
-    deadlineISO: "2026-07-21",
-    deadlineNote: "23:59 WIB",
-    cost: { type: "free", label: "Gratis" },
-    searchHint: "DigiCon6 Japan Foundation Jakarta submit",
-  },
   {
     id: "digicon6-my",
     name: "DigiCon6 ASIA 2026 (Malaysia Circuit)",
@@ -43,6 +34,14 @@ export const festivals = [
     url: "https://www.prestwickproductions.com",
   },
   {
+    id: "ai-film-3",
+    name: "AI Film 3 Festival",
+    countryCode: "USA",
+    deadlineISO: "2026-08-01",
+    cost: { type: "unknown", label: "Cek situs (aifilm3.com/FilmFreeway)" },
+    url: "https://www.aifilm3.com/submit",
+  },
+  {
     id: "lifeart",
     name: "LifeArt AI Global Film Festival",
     countryCode: "USA",
@@ -50,9 +49,8 @@ export const festivals = [
     cost: { type: "paid", label: "Berbayar (FestHome)" },
     url: "https://www.lifeartfestival.com/ai",
     tiers: [
-      { label: "Standard", dateISO: "2026-08-01" },
-      { label: "Late", dateISO: "2026-08-20" },
-      { label: "Extended", dateISO: "2026-09-01" },
+      { label: "Regular", dateISO: "2026-08-01" },
+      { label: "Late", dateISO: "2026-09-01" },
     ],
   },
   {
@@ -120,21 +118,12 @@ export const festivals = [
     url: "https://aifilm.jp/index_en.html",
   },
   {
-    id: "ai-for-good",
-    name: "AI for Good Film Festival (ITU)",
-    countryCode: "GLB",
-    deadlineISO: "2026-09-01",
-    cost: { type: "unknown", label: "Tidak diketahui" },
-    url: "https://aiforgood.itu.int/ai-for-good-film-festival/",
-    verify: true,
-  },
-  {
     id: "wearehuman",
     name: "WeAreHuman Foundation Film Festival",
     countryCode: "GLB",
     deadlineISO: "2026-09-30",
     cost: { type: "free", label: "Gratis" },
-    searchHint: "WeAreHuman Foundation Film Festival",
+    url: "https://wearehuman.foundation/en/call-for-films",
   },
   {
     id: "tyrannus",
