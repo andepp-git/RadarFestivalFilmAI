@@ -1,10 +1,11 @@
-import { useEffect, useMemo, useState } from "react";
+import { Fragment, useEffect, useMemo, useState } from "react";
 import { festivals } from "./data/festivals.js";
 import { daysUntil, monthKey, monthLabel, isOpen, primaryDeadline } from "./lib/deadline.js";
 import GrainOverlay from "./components/GrainOverlay.jsx";
 import Hero from "./components/Hero.jsx";
 import Toolbar from "./components/Toolbar.jsx";
 import FestivalGroup from "./components/FestivalGroup.jsx";
+import AdSlot from "./components/AdSlot.jsx";
 import Footer from "./components/Footer.jsx";
 
 function groupByMonth(items, now) {
@@ -81,8 +82,12 @@ export default function App() {
 
         <main id="jadwal" className="mx-auto max-w-[1180px] scroll-mt-20 px-5 pt-12 md:px-8">
           {groups.length > 0 ? (
-            groups.map((g) => (
-              <FestivalGroup key={g.key} label={g.label} items={g.items} now={now} />
+            groups.map((g, i) => (
+              <Fragment key={g.key}>
+                <FestivalGroup label={g.label} items={g.items} now={now} />
+                {/* Iklan 1: di sela daftar, setelah grup bulan pertama. */}
+                {i === 0 && <AdSlot slotId="inline-1" variant="leaderboard" />}
+              </Fragment>
             ))
           ) : (
             <div className="rounded-[var(--radius)] border border-dashed border-[color:var(--color-line-strong)] py-20 text-center">
@@ -98,6 +103,9 @@ export default function App() {
               </button>
             </div>
           )}
+
+          {/* Iklan 2: penutup daftar, sebelum footer. */}
+          <AdSlot slotId="footer-1" variant="billboard" />
         </main>
 
         <Footer />

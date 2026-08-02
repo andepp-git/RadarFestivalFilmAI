@@ -2,6 +2,8 @@
 // Hanya festival yang MASIH BUKA (deadline setelah 27 Jul 2026).
 // Empat kolom yang ditampilkan: Festival, Deadline, Biaya, Link.
 // `deadlineISO` = tanggal terdekat yang masih bisa dikejar. Urgensi dihitung live dari tanggal ini.
+// `tiers` = beberapa tanggal berjenjang; yang sudah lewat otomatis di-skip.
+// `tierNoun` = sebutan untuk jenjang itu (default "Tier", mis. "Tahap" untuk kontes berjenjang daftar/submit).
 
 export const UPDATED_LABEL = "27 Juli 2026";
 
@@ -91,6 +93,21 @@ export const festivals = [
       { label: "Late", dateISO: "2026-10-15" },
       { label: "Extended", dateISO: "2026-11-15" },
       { label: "Final", dateISO: "2026-12-05" },
+    ],
+  },
+  {
+    id: "pippit",
+    name: "Pippit AI Storytelling Contest",
+    countryCode: "GLB",
+    deadlineISO: "2026-08-30",
+    deadlineNote: "waktu PT",
+    cost: { type: "free", label: "Gratis" },
+    url: "https://wj.byteoversea.com/q/81757/Ap5k624P/447e/",
+    // Dua tahap: daftar dulu, baru kirim karya.
+    tierNoun: "Tahap",
+    tiers: [
+      { label: "Daftar", dateISO: "2026-08-30" },
+      { label: "Submit", dateISO: "2026-09-10" },
     ],
   },
   {

@@ -21,7 +21,7 @@ function tierShort(iso) {
 }
 
 export default function FestivalCard({ festival, now }) {
-  const { name, countryCode, deadlineNote, cost, url, searchHint, verify } = festival;
+  const { name, countryCode, deadlineNote, cost, url, searchHint, verify, tierNoun } = festival;
   // Tanggal berikutnya yang masih bisa dikejar (tier awal yang lewat otomatis di-skip).
   const upcoming = upcomingCandidates(festival, now);
   const primary = upcoming[0];
@@ -49,7 +49,7 @@ export default function FestivalCard({ festival, now }) {
           </div>
           {primary.label && (
             <span className="-mt-1 font-mono-num text-[11px] tracking-[0.1em] text-[color:var(--color-signal)]">
-              TIER {primary.label.toUpperCase()}
+              {(tierNoun ?? "Tier").toUpperCase()} {primary.label.toUpperCase()}
             </span>
           )}
           <CountdownChip iso={primary.dateISO} now={now} />
