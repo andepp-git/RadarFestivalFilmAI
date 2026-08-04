@@ -1,4 +1,4 @@
-import { ArrowUpRight, MagnifyingGlass, Warning } from "@phosphor-icons/react";
+import { ArrowUpRight, MagnifyingGlass, Trophy, Warning } from "@phosphor-icons/react";
 import { formatShort, statusOf, googleSearchUrl, upcomingCandidates } from "../lib/deadline.js";
 import { COUNTRIES } from "../data/festivals.js";
 import CountdownChip from "./CountdownChip.jsx";
@@ -10,10 +10,31 @@ const RAIL = {
   closed: "var(--color-lewat)",
 };
 
+// "Gratis" sengaja dibuat lebih besar dan tebal: ini daya tarik utama buat kreator.
 const COST_BADGE = {
-  free: "border-[color:var(--color-signal)] text-[color:var(--color-signal-soft)] bg-[rgba(140,224,75,0.08)]",
-  paid: "border-[color:var(--color-line-strong)] text-[color:var(--color-ink)]",
-  unknown: "border-dashed border-[color:var(--color-line-strong)] text-[color:var(--color-faint)]",
+  free: "border-[color:var(--color-signal)] text-[color:var(--color-signal-soft)] bg-[rgba(140,224,75,0.10)] px-3 py-1 text-[14px] font-semibold tracking-tight",
+  paid: "border-[color:var(--color-line-strong)] text-[color:var(--color-ink)] px-2.5 py-0.5 text-[11.5px] font-medium",
+  unknown:
+    "border-dashed border-[color:var(--color-line-strong)] text-[color:var(--color-faint)] px-2.5 py-0.5 text-[11.5px] font-medium",
+};
+
+// Sorotan hadiah: satu warna aksen, terang-redupnya mengikuti besaran pool.
+const PRIZE = {
+  mega: {
+    wrap: "border-[color:var(--color-signal)] bg-[rgba(140,224,75,0.14)] text-[color:var(--color-signal-soft)] shadow-[inset_0_1px_0_rgba(183,236,142,0.25)]",
+    amount: "text-[17px]",
+    icon: 17,
+  },
+  big: {
+    wrap: "border-[color:var(--color-signal-deep)] bg-[rgba(140,224,75,0.09)] text-[color:var(--color-signal)]",
+    amount: "text-[15px]",
+    icon: 16,
+  },
+  std: {
+    wrap: "border-[color:var(--color-line-strong)] bg-[rgba(140,224,75,0.05)] text-[color:var(--color-muted)]",
+    amount: "text-[13.5px]",
+    icon: 14,
+  },
 };
 
 function tierShort(iso) {
@@ -21,7 +42,9 @@ function tierShort(iso) {
 }
 
 export default function FestivalCard({ festival, now }) {
-  const { name, countryCode, deadlineNote, cost, url, searchHint, verify, tierNoun } = festival;
+  const { name, countryCode, deadlineNote, cost, prize, url, searchHint, verify, tierNoun } =
+    festival;
+  const prizeStyle = prize ? (PRIZE[prize.weight] ?? PRIZE.std) : null;
   // Tanggal berikutnya yang masih bisa dikejar (tier awal yang lewat otomatis di-skip).
   const upcoming = upcomingCandidates(festival, now);
   const primary = upcoming[0];
@@ -77,6 +100,21 @@ export default function FestivalCard({ festival, now }) {
           <h3 className="text-balance text-lg font-medium leading-snug text-[color:var(--color-ink)]">
             {name}
           </h3>
+
+          {prize && (
+            <div
+              className={`mt-3 inline-flex items-center gap-2 rounded-full border px-3 py-1.5 ${prizeStyle.wrap}`}
+            >
+              <Trophy size={prizeStyle.icon} weight="fill" />
+              <span className="font-mono-num text-[10px] uppercase tracking-[0.16em] opacity-70">
+                Hadiah
+              </span>
+              <span className={`font-mono-num font-semibold ${prizeStyle.amount}`}>
+                {prize.label}
+              </span>
+            </div>
+          )}
+
           <div className="mt-2.5 flex flex-wrap items-center gap-2.5">
             <span
               className="font-mono-num text-[11px] tracking-[0.14em] text-[color:var(--color-muted)]"
@@ -85,11 +123,7 @@ export default function FestivalCard({ festival, now }) {
               {countryCode}
             </span>
             <span className="text-[color:var(--color-line-strong)]">/</span>
-            <span
-              className={`rounded-full border px-2.5 py-0.5 text-[11.5px] font-medium ${COST_BADGE[cost.type]}`}
-            >
-              {cost.label}
-            </span>
+            <span className={`rounded-full border ${COST_BADGE[cost.type]}`}>{cost.label}</span>
             {verify && (
               <span className="inline-flex items-center gap-1 text-[11px] text-[color:var(--color-lewat)]">
                 <Warning size={13} weight="fill" />
