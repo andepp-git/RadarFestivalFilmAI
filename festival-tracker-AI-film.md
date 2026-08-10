@@ -12,6 +12,7 @@
 
 | Festival | Deadline | Biaya | Catatan eligibility | Link |
 |---|---|---|---|---|
+| **Future Vision XPRIZE** 🌍 ⭐ | **15 Agu 2026** 🔴 5 hari tersisa | **GRATIS** | **Grand Prize $2,6 JUTA** ($100K cash + $2.5M equity untuk produksi film penuh) + 4 runners-up $100K each + top 10 $10K. Submit: trailer max 3 menit + treatment max 12 halaman + written brief 2 halaman. **"AI, traditional filming, animation — it's all fair game"** — tidak ada syarat AI minimum. Open worldwide. Finals: Moonshot Summit, Los Angeles, 25 Sep 2026. Presented by Google, XPRIZE Foundation, Range. | [futurevisionxprize.com](https://futurevisionxprize.com/) |
 | **SIGGRAPH Asia 2026 — AI Film Frontiers Workshop** 🇲🇾 🆕 ⭐ | **23 Agu 2026** | GRATIS (akademis) | Workshop di konferensi paling prestisius di industri CG/VFX. Deadline: 23 Agu; Winners announced: 13 Sep; Screening: SIGGRAPH Asia Des 2026, Kuala Lumpur. Menerima AI-generated films. **⚠️ BARRIER TINGGI**: wajib submit film + technical report terpisah (novelty workflow, karakter konsistensi, dll). Cocok jika Andepp punya pipeline 3D+AI yang bisa didokumentasikan secara teknis. Winners publikasi di SIGGRAPH Asia Proceedings. Submit film via FilmFreeway (exception: official site adalah asia.siggraph.org — institusi ACM resmi). | [asia.siggraph.org](https://asia.siggraph.org/2026/submissions/workshops/ai-film-frontiers-workshop/) |
 | **2nd Asia AI Film Festival (AAFF)** 🇰🇷 🆕 | **25 Agu 2026** | **$10** | Festival Oct 8, 2026, Dongseo University Centum Campus, Busan — **festival regional Asia paling dekat secara budaya**. 7 awards: Grand Prize, Best Director, Best Storytelling, Best Visual Aesthetics, **Best AI Tech Innovation**, Next Generation Award, Jury Special Prize. Animation genre diterima. No explicit "full AI" requirement — judging berbasis story, craft, aesthetics, dan tech. Submit via form di situs resmi + optional FilmFreeway. Specs: FHD+ / 2K+, H.264 or MOV + poster vertikal + 5 stills + synopsis + filmography. | [aaff.iacst.org](https://aaff.iacst.org/) |
 | **Astana AI Film Festival (AAIFF)** 🇰🇿 ✅ Update deadline | ~~15 Agu~~ → **31 Agu 2026** (diperpanjang) | **GRATIS** | Prize pool $1 juta. Open Competition (any theme) + Thematic Competition ("The Future Worth Living In"). ✅ Deadline DIPERPANJANG dari 15 Agu → 31 Agu 2026. Sudah 1,500+ submissions dari 90+ negara. Event: 28 Sep – 1 Okt 2026, Astana. ⚠️ ELIGIBILITY PENTING: "Generative AI must be a core part of the filmmaking process — NOT just VFX or upscaling." Pastiin pipeline 3D+AI lo qualify. Film maks 10 menit, perlu disclose model & pipeline. Submit via YouTube link. | [aaiff.ai](https://www.aaiff.ai/) |
@@ -47,7 +48,6 @@
 | Festival | Deadline lewat | Catatan |
 |---|---|---|
 | **Austin AI Film Festival** 🇺🇸 | **15 Agu 2026** | Dipindah ke SUDAH LEWAT minggu ini. Konferensi 2 hari, 16–17 Okt 2026. Pantau edisi berikut di [austinaifilmfest.com](https://www.austinaifilmfest.com/). |
-| **Future Vision XPRIZE** 🌍 ⭐ | **15 Agu 2026** | Dipindah ke SUDAH LEWAT minggu ini. Finals: Moonshot Summit, LA, 25 Sep 2026. **Grand Prize $2,6 JUTA** ($100K cash + $2.5M equity). Pantau edisi berikut di [futurevisionxprize.com](https://futurevisionxprize.com/). |
 | **Red Rocks AI Film Festival** 🇺🇸 | **1 Agu 2026** | Festival in-person St. George, Utah, 24 Sep 2026. Tidak ada syarat full-AI eksplisit. Pantau edisi berikut di prestwickproductions.com. |
 | **AI Film 3 Festival** 🇺🇸 | **1 Agu 2026** | Arizona, USA, Festival Sep 17–19, 2026. Hybrid/AI-assisted diterima, Best AI Short Form max 8 mnt. Pantau edisi berikut di [aifilm3.com](https://www.aifilm3.com/). |
 | **DigiCon6 ASIA 2026 (Malaysia Circuit)** 🇲🇾 | **31 Jul 2026** | GRATIS via MDEC. Animasi pendek se-Asia. Pantau edisi 2027 via mdec.com.my. |
@@ -120,9 +120,9 @@
 
 **Dipindah ke SUDAH LEWAT:**
 - ⏳ **Austin AI Film Festival** — deadline 15 Agu sudah lewat (relatif terhadap scan hari ini, 10 Agu — dipindah karena hanya 5 hari lagi dan efektif closing).
-- ⏳ **Future Vision XPRIZE** — sama, 15 Agu sudah sangat dekat/lewat.
 
 **Asumsi otomatis minggu ini:**
-- Austin AI Film Festival dan Future Vision XPRIZE (deadline 15 Agu, 5 hari dari scan) dipindah ke SUDAH LEWAT — deadline terlalu dekat untuk notifikasi berguna minggu depan.
+- Austin AI Film Festival (deadline 15 Agu, 5 hari dari scan) dipindah ke SUDAH LEWAT — deadline terlalu dekat untuk notifikasi berguna minggu depan.
+- Future Vision XPRIZE dikembalikan ke MASIH BUKA atas permintaan Andepp — deadline 15 Agu, 5 hari tersisa.
 - Chroma Awards Season 2 tetap di Watchlist — tidak ada pengumuman publik per scan hari ini.
 - SIGGRAPH Asia AI Film Frontiers dimasukkan meski submission via FilmFreeway karena official site adalah asia.siggraph.org (ACM) = institusi resmi, bukan listing FF semata.

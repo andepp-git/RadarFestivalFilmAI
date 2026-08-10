@@ -42,6 +42,19 @@ export const festivals = [
     ],
   },
   {
+    // CATATAN: di festival-tracker-AI-film.md (scan 10 Agu) entri ini ada di bagian
+    // SUDAH LEWAT, padahal deadline-nya 15 Agu dan waktu itu belum lewat.
+    // Sengaja dipertahankan atas permintaan Andepp: hadiahnya terlalu besar untuk dilewatkan.
+    // Jangan dihapus otomatis saat sinkron scan mingguan; hapus hanya kalau 15 Agu 2026 benar-benar lewat.
+    id: "future-vision-xprize",
+    name: "Future Vision XPRIZE",
+    countryCode: "GLB",
+    deadlineISO: "2026-08-15",
+    cost: { type: "free", label: "Gratis" },
+    prize: { label: "$2,6 juta", weight: "mega" },
+    url: "https://futurevisionxprize.com/",
+  },
+  {
     id: "siggraph-asia",
     name: "SIGGRAPH Asia 2026 - AI Film Frontiers Workshop",
     countryCode: "MYS",
