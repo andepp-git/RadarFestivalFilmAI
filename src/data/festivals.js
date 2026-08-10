@@ -1,5 +1,5 @@
-// Radar Festival Film AI — data snapshot (scan Epino Production, 3 Agustus 2026).
-// Hanya festival yang MASIH BUKA (deadline setelah 3 Agu 2026).
+// Radar Festival Film AI — data snapshot (scan Epino Production, 10 Agustus 2026).
+// Hanya festival yang MASIH BUKA (deadline setelah 10 Agu 2026).
 // Kolom yang ditampilkan: Festival, Deadline, Biaya, Hadiah, Link.
 // `deadlineISO` = tanggal terdekat yang masih bisa dikejar. Urgensi dihitung live dari tanggal ini.
 // `tiers` = beberapa tanggal berjenjang; yang sudah lewat otomatis di-skip.
@@ -7,7 +7,7 @@
 // `prize.weight` = besaran hadiah: 'mega' (>= $100rb) · 'big' ($10rb-$100rb) · 'std' (di bawah itu).
 //   Dipakai buat mengatur seberapa terang sorotannya. Festival tanpa data hadiah: kosongkan saja.
 
-export const UPDATED_LABEL = "3 Agustus 2026";
+export const UPDATED_LABEL = "10 Agustus 2026";
 
 export const COUNTRIES = {
   IND: "India",
@@ -17,51 +17,14 @@ export const COUNTRIES = {
   IDN: "Indonesia",
   DEU: "Jerman",
   EGY: "Mesir",
+  ITA: "Italia",
+  KOR: "Korea Selatan",
+  MYS: "Malaysia",
   GLB: "Global / Online",
 };
 
 // cost.type: 'free' | 'paid' | 'unknown'  (dipakai untuk filter + kuat-lemahnya sinyal)
 export const festivals = [
-  {
-    id: "slamdance-dig",
-    name: "Slamdance - kategori DIG",
-    countryCode: "USA",
-    deadlineISO: "2026-08-10",
-    cost: { type: "paid", label: "DIG/Shorts: $60-90 (tiered)" },
-    url: "https://slamdance.com/festival-submit/",
-    tiers: [
-      { label: "Regular", dateISO: "2026-08-10" },
-      { label: "Late", dateISO: "2026-09-14" },
-      { label: "Extended", dateISO: "2026-10-06" },
-    ],
-  },
-  {
-    id: "astana",
-    name: "Astana AI Film Festival (AAIFF)",
-    countryCode: "KAZ",
-    deadlineISO: "2026-08-15",
-    cost: { type: "free", label: "Gratis" },
-    prize: { label: "$1 juta", weight: "mega" },
-    url: "https://www.aaiff.ai/",
-  },
-  {
-    id: "austin",
-    name: "Austin AI Film Festival",
-    countryCode: "USA",
-    deadlineISO: "2026-08-15",
-    deadlineNote: "23:59 CST",
-    cost: { type: "paid", label: "Ada entry fee" },
-    url: "https://www.austinaifilmfest.com/terms",
-  },
-  {
-    id: "future-vision-xprize",
-    name: "Future Vision XPRIZE",
-    countryCode: "GLB",
-    deadlineISO: "2026-08-15",
-    cost: { type: "free", label: "Gratis" },
-    prize: { label: "$2,6 juta", weight: "mega" },
-    url: "https://futurevisionxprize.com/",
-  },
   {
     id: "jiff-2027",
     name: "JIFF 2027 - World AI Cinema Competition",
@@ -79,12 +42,28 @@ export const festivals = [
     ],
   },
   {
+    id: "siggraph-asia",
+    name: "SIGGRAPH Asia 2026 - AI Film Frontiers Workshop",
+    countryCode: "MYS",
+    deadlineISO: "2026-08-23",
+    cost: { type: "free", label: "Gratis" },
+    url: "https://asia.siggraph.org/2026/submissions/workshops/ai-film-frontiers-workshop/",
+  },
+  {
     id: "cairo",
     name: "AI Cinema Festival Cairo",
     countryCode: "EGY",
     deadlineISO: "2026-08-23",
     cost: { type: "unknown", label: "Cek situs" },
     url: "https://cairo.aicinemafestival.com/",
+  },
+  {
+    id: "aaff-asia",
+    name: "2nd Asia AI Film Festival (AAFF)",
+    countryCode: "KOR",
+    deadlineISO: "2026-08-25",
+    cost: { type: "paid", label: "$10" },
+    url: "https://aaff.iacst.org/",
   },
   {
     id: "pippit",
@@ -103,13 +82,22 @@ export const festivals = [
     ],
   },
   {
-    id: "sparknify",
-    name: "Sparknify Human vs. AI Film Festival",
-    countryCode: "USA",
+    id: "astana",
+    name: "Astana AI Film Festival (AAIFF)",
+    countryCode: "KAZ",
+    // Diperpanjang dari 15 Agu.
     deadlineISO: "2026-08-31",
-    cost: { type: "paid", label: "Earlybird gratis, standar mulai $5" },
-    prize: { label: "$3.000", weight: "std" },
-    url: "https://www.sparknify.com/human-vs-ai-film-festival",
+    cost: { type: "free", label: "Gratis" },
+    prize: { label: "$1 juta", weight: "mega" },
+    url: "https://www.aaiff.ai/",
+  },
+  {
+    id: "ai-motion-iulm",
+    name: "AI.motion - Festival Italiano Cinema & AI (IULM Milan)",
+    countryCode: "ITA",
+    deadlineISO: "2026-08-31",
+    cost: { type: "free", label: "Gratis" },
+    url: "https://www.iulm.it/en/news-ed-eventi/news/ai-motion-festival-italiano-del-cinema-e-audiviosivo-intelligenza-artificiale",
   },
   {
     id: "biberach",
@@ -130,6 +118,15 @@ export const festivals = [
     url: "https://iffigoa.org",
   },
   {
+    id: "sparknify",
+    name: "Sparknify Human vs. AI Film Festival",
+    countryCode: "USA",
+    deadlineISO: "2026-08-31",
+    cost: { type: "paid", label: "Earlybird gratis, standar mulai $5" },
+    prize: { label: "$3.000", weight: "std" },
+    url: "https://www.sparknify.com/human-vs-ai-film-festival",
+  },
+  {
     id: "lifeart",
     name: "LifeArt AI Global Film Festival",
     countryCode: "USA",
@@ -144,6 +141,15 @@ export const festivals = [
     deadlineISO: "2026-09-01",
     cost: { type: "paid", label: "Berbayar" },
     url: "https://aifilm.jp/index_en.html",
+  },
+  {
+    id: "higgsfield",
+    name: "Higgsfield Global Film Festival",
+    countryCode: "GLB",
+    deadlineISO: "2026-09-03",
+    cost: { type: "paid", label: "Perlu langganan Higgsfield" },
+    prize: { label: "$1 juta", weight: "mega" },
+    url: "https://higgsfield.ai/contests/higgsfield-global-film-festival",
   },
   {
     id: "tyrannus",
