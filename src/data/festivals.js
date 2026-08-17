@@ -1,13 +1,16 @@
-// Radar Festival Film AI — data snapshot (scan Epino Production, 10 Agustus 2026).
-// Hanya festival yang MASIH BUKA (deadline setelah 10 Agu 2026).
+// Radar Festival Film AI — data snapshot (scan Epino Production, 17 Agustus 2026).
+// Hanya festival yang MASIH BUKA (deadline setelah 17 Agu 2026).
 // Kolom yang ditampilkan: Festival, Deadline, Biaya, Hadiah, Link.
 // `deadlineISO` = tanggal terdekat yang masih bisa dikejar. Urgensi dihitung live dari tanggal ini.
 // `tiers` = beberapa tanggal berjenjang; yang sudah lewat otomatis di-skip.
 // `tierNoun` = sebutan untuk jenjang itu (default "Tier", mis. "Tahap" untuk kontes berjenjang daftar/submit).
 // `prize.weight` = besaran hadiah: 'mega' (>= $100rb) · 'big' ($10rb-$100rb) · 'std' (di bawah itu).
 //   Dipakai buat mengatur seberapa terang sorotannya. Festival tanpa data hadiah: kosongkan saja.
+//
+// Catatan: Future Vision XPRIZE sudah dikeluarkan minggu ini. Deadline 15 Agu benar-benar
+// lewat per scan 17 Agu, jadi pengecualian yang dipasang minggu lalu sudah selesai masa berlakunya.
 
-export const UPDATED_LABEL = "10 Agustus 2026";
+export const UPDATED_LABEL = "17 Agustus 2026";
 
 export const COUNTRIES = {
   IND: "India",
@@ -18,6 +21,8 @@ export const COUNTRIES = {
   DEU: "Jerman",
   EGY: "Mesir",
   ITA: "Italia",
+  ESP: "Spanyol",
+  CZE: "Ceko",
   KOR: "Korea Selatan",
   MYS: "Malaysia",
   GLB: "Global / Online",
@@ -26,41 +31,12 @@ export const COUNTRIES = {
 // cost.type: 'free' | 'paid' | 'unknown'  (dipakai untuk filter + kuat-lemahnya sinyal)
 export const festivals = [
   {
-    id: "jiff-2027",
-    name: "JIFF 2027 - World AI Cinema Competition",
-    countryCode: "IND",
-    deadlineISO: "2026-08-15",
-    cost: { type: "paid", label: "Berbayar" },
-    prize: { label: "hingga $80.000", weight: "big" },
-    url: "https://jiffindia.org",
-    tiers: [
-      { label: "Early", dateISO: "2026-08-15" },
-      { label: "Regular", dateISO: "2026-09-15" },
-      { label: "Late", dateISO: "2026-10-15" },
-      { label: "Extended", dateISO: "2026-11-15" },
-      { label: "Final", dateISO: "2026-12-05" },
-    ],
-  },
-  {
-    // CATATAN: di festival-tracker-AI-film.md (scan 10 Agu) entri ini ada di bagian
-    // SUDAH LEWAT, padahal deadline-nya 15 Agu dan waktu itu belum lewat.
-    // Sengaja dipertahankan atas permintaan Andepp: hadiahnya terlalu besar untuk dilewatkan.
-    // Jangan dihapus otomatis saat sinkron scan mingguan; hapus hanya kalau 15 Agu 2026 benar-benar lewat.
-    id: "future-vision-xprize",
-    name: "Future Vision XPRIZE",
-    countryCode: "GLB",
-    deadlineISO: "2026-08-15",
-    cost: { type: "free", label: "Gratis" },
-    prize: { label: "$2,6 juta", weight: "mega" },
-    url: "https://futurevisionxprize.com/",
-  },
-  {
     id: "siggraph-asia",
     name: "SIGGRAPH Asia 2026 - AI Film Frontiers Workshop",
     countryCode: "MYS",
     deadlineISO: "2026-08-23",
     cost: { type: "free", label: "Gratis" },
-    url: "https://asia.siggraph.org/2026/submissions/workshops/ai-film-frontiers-workshop/",
+    url: "https://asia.siggraph.org/2026/submissions/workshops/ai-film-frontiers-workshop",
   },
   {
     id: "cairo",
@@ -76,7 +52,21 @@ export const festivals = [
     countryCode: "KOR",
     deadlineISO: "2026-08-25",
     cost: { type: "paid", label: "$10" },
-    url: "https://aaff.iacst.org/",
+    url: "https://aaff.iacst.org",
+  },
+  {
+    id: "ia-en-corto",
+    name: "IA en Corto - International AI Short Film Festival",
+    countryCode: "ESP",
+    deadlineISO: "2026-08-30",
+    cost: { type: "paid", label: "$2-9 (naik tiap tier)" },
+    url: "https://festhome.com/en/festival/festival-internacional-de-cortometrajes-creados-con-inteligencia-artificial",
+    tiers: [
+      { label: "Early", dateISO: "2026-08-30" },
+      { label: "Standard", dateISO: "2026-09-15" },
+      { label: "Late", dateISO: "2026-10-04" },
+      { label: "Extended", dateISO: "2026-10-18" },
+    ],
   },
   {
     id: "pippit",
@@ -98,7 +88,6 @@ export const festivals = [
     id: "astana",
     name: "Astana AI Film Festival (AAIFF)",
     countryCode: "KAZ",
-    // Diperpanjang dari 15 Agu.
     deadlineISO: "2026-08-31",
     cost: { type: "free", label: "Gratis" },
     prize: { label: "$1 juta", weight: "mega" },
@@ -117,9 +106,10 @@ export const festivals = [
     name: "German AI Film Festival (Biberach)",
     countryCode: "DEU",
     deadlineISO: "2026-08-31",
-    cost: { type: "unknown", label: "Cek situs (Festhome)" },
+    deadlineNote: "tanggal belum pasti",
+    cost: { type: "paid", label: "EUR 25 (siswa EUR 5)" },
     prize: { label: "EUR 2.000", weight: "std" },
-    url: "https://filmmakers.festhome.com/en/festival/ai-filmfestival",
+    url: "https://kifestival.ensemble-film.de/submission-guidelines",
     verify: true,
   },
   {
@@ -128,7 +118,7 @@ export const festivals = [
     countryCode: "IND",
     deadlineISO: "2026-08-31",
     cost: { type: "free", label: "Gratis" },
-    url: "https://iffigoa.org",
+    url: "https://iffigoa.org/ai-film-festival",
   },
   {
     id: "sparknify",
@@ -144,7 +134,7 @@ export const festivals = [
     name: "LifeArt AI Global Film Festival",
     countryCode: "USA",
     deadlineISO: "2026-09-01",
-    cost: { type: "paid", label: "Berbayar (FestHome)" },
+    cost: { type: "paid", label: "Berbayar (tier terakhir)" },
     url: "https://www.lifeartfestival.com/ai",
   },
   {
@@ -165,13 +155,53 @@ export const festivals = [
     url: "https://higgsfield.ai/contests/higgsfield-global-film-festival",
   },
   {
+    id: "capcut-seedance",
+    name: "CapCut Seedance 2.5 Video Challenge Wave 2",
+    countryCode: "GLB",
+    deadlineISO: "2026-09-06",
+    deadlineNote: "23:59 UTC",
+    cost: { type: "free", label: "Gratis" },
+    prize: { label: "$80.000", weight: "big" },
+    url: "https://capcutaichallenge.com/",
+  },
+  {
+    id: "paiff-prague",
+    name: "PAIFF - Prague AI Film Festival",
+    countryCode: "CZE",
+    deadlineISO: "2026-09-10",
+    cost: { type: "paid", label: "Berbayar (Festhome, tier naik)" },
+    prize: { label: "$900", weight: "std" },
+    url: "https://filmmakers.festhome.com/en/festival/10597",
+    tiers: [
+      { label: "Early", dateISO: "2026-09-10" },
+      { label: "Standard", dateISO: "2026-09-15" },
+      { label: "Late", dateISO: "2026-10-31" },
+    ],
+  },
+  {
+    id: "jiff-2027",
+    name: "JIFF 2027 - World AI Cinema Competition",
+    countryCode: "IND",
+    deadlineISO: "2026-09-15",
+    cost: { type: "paid", label: "Berbayar" },
+    prize: { label: "hingga $80.000", weight: "big" },
+    url: "https://jiffindia.org",
+    // Tier Early (15 Agu) sudah lewat.
+    tiers: [
+      { label: "Regular", dateISO: "2026-09-15" },
+      { label: "Late", dateISO: "2026-10-15" },
+      { label: "Extended", dateISO: "2026-11-15" },
+      { label: "Final", dateISO: "2026-12-05" },
+    ],
+  },
+  {
     id: "tyrannus",
     name: "Tyrannus Angel Awards",
     countryCode: "USA",
     deadlineISO: "2026-09-20",
     cost: { type: "unknown", label: "Cek situs" },
-    prize: { label: "$48.000 (grant)", weight: "big" },
-    url: "https://tyrannusfoundation.org",
+    prize: { label: "$50.000", weight: "big" },
+    url: "https://tyrannusangelawards.org",
   },
   {
     id: "wearehuman",
@@ -179,7 +209,7 @@ export const festivals = [
     countryCode: "GLB",
     deadlineISO: "2026-09-30",
     cost: { type: "free", label: "Gratis" },
-    prize: { label: "EUR 10.000", weight: "big" },
+    prize: { label: "EUR 10.000+", weight: "big" },
     url: "https://wearehuman.foundation/en/call-for-films",
   },
   {
@@ -187,17 +217,9 @@ export const festivals = [
     name: "AI Film & Ads Awards Bali",
     countryCode: "IDN",
     deadlineISO: "2026-10-15",
+    deadlineNote: "estimasi",
     cost: { type: "paid", label: "Berbayar (tiered)" },
-    searchHint: "AI Film Ads Awards Bali megatix",
-  },
-  {
-    id: "ai-zone",
-    name: "AI ZONE International AI Film Festival 2026",
-    countryCode: "GLB",
-    deadlineISO: "2026-11-30",
-    cost: { type: "unknown", label: "Tidak disebut" },
-    prize: { label: "$500 (grand prize)", weight: "std" },
-    url: "https://ai-zone.net/festival/",
+    url: "https://www.filmawards.ai",
   },
   {
     id: "berlin-2",
